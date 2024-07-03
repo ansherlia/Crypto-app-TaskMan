@@ -1,0 +1,25 @@
+.pagination {
+	display: flex;
+	/* text-align: center; */
+	justify-content: center;
+	margin: 100px 0 40px;
+}
+.pagination button {
+	margin: 0 20px;
+	border: none;
+	padding: 0 10px;
+	border-radius: 5px;
+	background-color: blueviolet;
+	color: #fff;
+	font-size: 1.1rem;
+	cursor: pointer;
+}
+.pagination p {
+	margin: 0 20px;
+	border: 1px solid blueviolet;
+	padding: 3px 10px;
+	border-radius: 5px;
+}
+.selected {
+	background-color: blueviolet;
+}
