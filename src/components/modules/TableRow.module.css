@@ -1,0 +1,20 @@
+.contain {
+	width: 100%;
+	height: 60px;
+}
+.symbol {
+	display: flex;
+	align-items: center;
+}
+.symbol img {
+	width: 40px;
+}
+.symbol span {
+	margin-left: 10px;
+}
+.success {
+	color: rgb(18, 128, 14);
+}
+.error {
+	color: darkred;
+}
