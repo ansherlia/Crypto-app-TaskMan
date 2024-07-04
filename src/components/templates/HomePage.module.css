@@ -1,0 +1,11 @@
+.errorMessage {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	min-height: 1000px;
+	font-size: 2.5rem;
+}
+.homePage {
+	margin: auto;
+}

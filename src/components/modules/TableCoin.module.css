@@ -17,6 +17,7 @@
 	height: 60px;
 	color: #524c4c;
 }
+
 @media (max-width: 600px) {
 	.table {
 		overflow-x: scroll;

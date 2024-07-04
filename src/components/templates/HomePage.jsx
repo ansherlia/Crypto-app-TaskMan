@@ -2,24 +2,48 @@ import { useEffect, useState } from "react";
 import { apiAndUrl } from "../../services/apiandReq";
 import TableCoins from "../modules/TableCoins";
 import Pagination from "../modules/Pagination";
+import Search from "../modules/Search";
+import styles from "./HomePage.module.css";
+import Chart from "../modules/Chart";
+import Layouts from "../Layouts/Layouts";
 function HomePage() {
 	const [page, setPage] = useState(1);
 	const [coins, setCoins] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
+	const [error, setError] = useState(false);
+	const [currency, setCurrency] = useState("usd");
+	const [chart, setChart] = useState(false);
 	useEffect(() => {
 		const coinsFetchData = async () => {
-			const respone = await fetch(apiAndUrl(page));
-			const json = await respone.json();
-			console.log(json);
-			setCoins(json);
+			try {
+				const respone = await fetch(apiAndUrl(page, currency));
+				const json = await respone.json();
+
+				setCoins(json);
+				setIsLoading(false);
+			} catch (error) {
+				setError(true);
+			}
 		};
 		coinsFetchData();
-		console.log(coins);
-	}, [page]);
+	}, [page, currency]);
 	return (
-		<div>
-			<TableCoins coins={coins} />
+		<Layouts>
+			<Search setCurrency={setCurrency} />
+			{error ? (
+				<h2 className={styles.errorMessage}>SomeThing went wrong!</h2>
+			) : (
+				<TableCoins
+					coins={coins}
+					isLoading={isLoading}
+					setIsLoading={setIsLoading}
+					currency={currency}
+					setChart={setChart}
+				/>
+			)}
 			<Pagination page={page} setPage={setPage} />
-		</div>
+			{!!chart && <Chart setChart={setChart} chart={chart} coins={coins} />}
+		</Layouts>
 	);
 }
 

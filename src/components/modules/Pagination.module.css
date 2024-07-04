@@ -23,3 +23,7 @@
 .selected {
 	background-color: blueviolet;
 }
+
+.disabled {
+	opacity: 0.3;
+}
